@@ -13,13 +13,14 @@ body {
 
 /* Main card */
 .container {
-  max-width: 900px;
+  max-width: 550px;
   margin: auto;
   background: #ffffff;
   color: #2b2b2b;
   padding: 32px;
   border-radius: 16px;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
+  
 }
 
 /* Headings */
