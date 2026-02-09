@@ -91,3 +91,68 @@ form.addEventListener("submit", function (e) {
   form.reset();
   placeDetails.innerHTML = "<p>Select a place to see details</p>";
 });
+
+
+// ==========================================
+// 3️ RENDER FUNCTIONS
+// ==========================================
+
+// Render list of places
+function renderPlaces() {
+  placesList.innerHTML = "";
+
+  const placesArr = Object.values(placeManager.places);
+
+  if (placesArr.length === 0) {
+    placesList.innerHTML = "<li>No places added yet</li>";
+    return;
+  }
+
+  placesArr.forEach(place => {
+    const li = document.createElement("li");
+    li.textContent = place.location;
+
+    li.addEventListener("click", function () {
+      showPlaceDetails(place.id);
+    });
+
+    placesList.appendChild(li);
+  });
+}
+
+// Show place details
+function showPlaceDetails(id) {
+  const place = placeManager.places[id];
+
+  placeDetails.innerHTML = `
+    ${place.getDetails()}
+    <div class="action-buttons">
+      <button class="edit-btn">Edit</button>
+      <button class="delete-btn">Delete</button>
+    </div>
+  `;
+
+  // Edit handler
+  document.querySelector(".edit-btn").onclick = function () {
+    loadEditForm(place);
+  };
+
+  // Delete handler
+  document.querySelector(".delete-btn").onclick = function () {
+    if (confirm("Delete this place?")) {
+      placeManager.deletePlace(id);
+      renderPlaces();
+      placeDetails.innerHTML = "<p>Place deleted</p>";
+    }
+  };
+}
+
+// Load place data 
+function loadEditForm(place) {
+  document.getElementById("location").value = place.location;
+  document.getElementById("landmarks").value = place.landmarks;
+  document.getElementById("season").value = place.season;
+  document.getElementById("notes").value = place.notes;
+
+  editId = place.id;
+}
