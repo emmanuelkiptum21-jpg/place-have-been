@@ -156,3 +156,15 @@ function loadEditForm(place) {
 
   editId = place.id;
 }
+
+// ==========================================
+// 4️ My Data
+// ==========================================
+const p1 = new Place("Paris", "Eiffel Tower, Louvre", "Spring", "Romantic city");
+const p2 = new Place("Nairobi", "Giraffe Center, Karen Blixen Museum", "Winter", "Vibrant culture");
+
+placeManager.addPlace(p1);
+placeManager.addPlace(p2);
+
+renderPlaces();
+placeDetails.innerHTML = "<p>Select a place to see details</p>";
