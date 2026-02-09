@@ -20,3 +20,35 @@ Place.prototype.getDetails = function () {
   `;
 };
 
+/**
+ * PlaceManager class: manages all Place objects
+ */
+function PlaceManager() {
+  this.places = {}; // store as {id: Place}
+  this.currentId = 0;
+}
+
+PlaceManager.prototype.assignId = function () {
+  this.currentId++;
+  return this.currentId;
+};
+
+PlaceManager.prototype.addPlace = function (place) {
+  place.id = this.assignId();
+  this.places[place.id] = place;
+};
+
+PlaceManager.prototype.deletePlace = function (id) {
+  if (this.places[id]) {
+    delete this.places[id];
+    return true;
+  }
+  return false;
+};
+
+PlaceManager.prototype.updatePlace = function (id, updatedPlace) {
+  if (this.places[id]) {
+    updatedPlace.id = id; // keep original id
+    this.places[id] = updatedPlace;
+  }
+};
