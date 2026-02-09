@@ -52,3 +52,42 @@ PlaceManager.prototype.updatePlace = function (id, updatedPlace) {
     this.places[id] = updatedPlace;
   }
 };
+
+// ==========================================
+// 2️ UI 
+// ==========================================
+
+const placeManager = new PlaceManager();
+let editId = null;
+
+const form = document.getElementById("placeForm");
+const placesList = document.getElementById("placesList");
+const placeDetails = document.getElementById("placeDetails");
+
+// Add / Edit handler
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const location = document.getElementById("location").value.trim();
+  const landmarks = document.getElementById("landmarks").value.trim();
+  const season = document.getElementById("season").value;
+  const notes = document.getElementById("notes").value.trim();
+
+  if (!location) {
+    alert("Location is required");
+    return;
+  }
+
+  const place = new Place(location, landmarks, season, notes);
+
+  if (editId === null) {
+    placeManager.addPlace(place);
+  } else {
+    placeManager.updatePlace(editId, place);
+    editId = null;
+  }
+
+  renderPlaces();
+  form.reset();
+  placeDetails.innerHTML = "<p>Select a place to see details</p>";
+});
