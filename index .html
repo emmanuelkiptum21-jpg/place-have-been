@@ -1,52 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>my favorite  place</title>
+    <title>my favorite place</title>
     <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-    
-  <main class="container">
-    <!-- HEADER -->
-    <header>
-      <h1>🌍 Places I've Been</h1>
-      <p class="subtitle">A simple travel journal</p>
-    </header>
 
-    <!-- FORM SECTION -->
-    <section class="form-section">
-      <form id="placeForm">
-        <input
-          type="text"
-          id="location"
-          placeholder="Location"
-          required
-        />
+    <main class="container">
+        <!-- HEADER -->
+        <header>
+            <h1>🌍 Places I've Been</h1>
+            <p class="subtitle">A simple travel journal</p>
+        </header>
 
-        <input
-          type="text"
-          id="landmarks"
-          placeholder="Landmarks"
-          required
-        />
+        <!-- FORM SECTION -->
+        <section class="form-section">
+            <form id="placeForm">
+                <input type="text" id="location" placeholder="Location" required />
 
-        <input
-          type="text"
-          id="season"
-          placeholder="Best time of year"
-          required
-        />
+                <input type="text" id="landmarks" placeholder="Landmarks" required />
 
-        <textarea
-          id="notes"
-          placeholder="Notes (optional)"
-        ></textarea>
+                <input type="text" id="season" placeholder="Best time of year" required />
 
-        <button type="submit">Save Place</button>
-      </form>
-    </section>
-    <script> src="./"</script>
+                <textarea id="notes" placeholder="Notes (optional)"></textarea>
+
+                <button type="submit">Save Place</button>
+            </form>
+        </section>
+
+
+        <!-- CONTENT SECTION -->
+        <section class="content">
+
+            <!-- PLACES LIST -->
+            <aside class="places">
+                <h2>My Places</h2>
+                <ul id="placesList">
+                    <!-- Places added by JavaScript -->
+                </ul>
+            </aside>
+
+            <!-- PLACE DETAILS -->
+            <article id="placeDetails" class="details">
+                <h2>Place Details</h2>
+                <p>Select a place to see details</p>
+            </article>
+
+        </section>
+    </main>
+    <script> src = "./"</script>
 </body>
+
 </html>
